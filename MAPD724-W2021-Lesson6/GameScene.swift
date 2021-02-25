@@ -12,6 +12,7 @@ class GameScene: SKScene
     
     // instance variables
     var ocean: Ocean?
+    var island: Island?
     
     override func didMove(to view: SKView)
     {
@@ -24,6 +25,10 @@ class GameScene: SKScene
         ocean = Ocean() // allocate memory
         ocean?.position = CGPoint(x: 0, y: 773)
         addChild(ocean!) // add object to the scene
+        
+        // add island to the scene
+        island = Island()
+        addChild(island!)
     }
     
     
@@ -66,5 +71,6 @@ class GameScene: SKScene
     override func update(_ currentTime: TimeInterval)
     {
         ocean?.Update()
+        island?.Update()
     }
 }
