@@ -1,10 +1,3 @@
-//
-//  GameViewController.swift
-//  MAPD724-W2021-Lesson6
-//
-//  Created by Tom Tsiliopoulos on 2021-02-24.
-//
-
 import UIKit
 import SpriteKit
 import GameplayKit
@@ -26,16 +19,16 @@ class GameViewController: UIViewController {
             
             view.ignoresSiblingOrder = true
             
-            view.showsFPS = true
-            view.showsNodeCount = true
         }
     }
 
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate: Bool
+    {
         return true
     }
 
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask
+    {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
         } else {
@@ -43,7 +36,8 @@ class GameViewController: UIViewController {
         }
     }
 
-    override var prefersStatusBarHidden: Bool {
+    override var prefersStatusBarHidden: Bool
+    {
         return true
     }
 }
