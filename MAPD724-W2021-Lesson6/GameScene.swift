@@ -1,16 +1,29 @@
+import UIKit
+import AVFoundation
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+let screenSize = UIScreen.main.bounds
+var screenWidth: CGFloat?
+var screenHeight: CGFloat?
+
+class GameScene: SKScene
+{
     
-    
+    // instance variables
+    var ocean: Ocean?
     
     override func didMove(to view: SKView)
     {
+        screenWidth = frame.width
+        screenHeight = frame.height
         
+        name = "GAME"
         
-        
-        
+        // add ocean to the scene
+        ocean = Ocean() // allocate memory
+        ocean?.position = CGPoint(x: 0, y: 773)
+        addChild(ocean!) // add object to the scene
     }
     
     
@@ -52,6 +65,6 @@ class GameScene: SKScene {
     // this is where all the fun happens - this function is called about 60fps - every 16.666ms
     override func update(_ currentTime: TimeInterval)
     {
-        
+        ocean?.Update()
     }
 }
