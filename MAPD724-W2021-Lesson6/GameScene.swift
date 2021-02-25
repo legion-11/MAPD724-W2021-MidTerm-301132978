@@ -13,6 +13,7 @@ class GameScene: SKScene
     // instance variables
     var ocean: Ocean?
     var island: Island?
+    var clouds: [Cloud] = []
     
     override func didMove(to view: SKView)
     {
@@ -29,6 +30,14 @@ class GameScene: SKScene
         // add island to the scene
         island = Island()
         addChild(island!)
+        
+        // add 3 clouds to the scene
+        for index in 0...2
+        {
+            let cloud: Cloud = Cloud()
+            clouds.append(cloud)
+            addChild(clouds[index])
+        }
     }
     
     
@@ -72,5 +81,12 @@ class GameScene: SKScene
     {
         ocean?.Update()
         island?.Update()
+        
+        for cloud in clouds
+        {
+            cloud.Update()
+        }
+        
+        
     }
 }
