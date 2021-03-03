@@ -2,8 +2,13 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController
+{
 
+    @IBOutlet weak var LivesLabel: UILabel!
+    
+    @IBOutlet weak var ScoreLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +25,13 @@ class GameViewController: UIViewController {
             view.ignoresSiblingOrder = true
             
         }
+        
+        CollisionManager.gameViewController = self
+        ScoreManager.Score = 0
+        ScoreManager.Lives = 5
+        updateLivesLabel()
+        updateScoreLabel()
+        
     }
 
     override var shouldAutorotate: Bool
@@ -40,4 +52,15 @@ class GameViewController: UIViewController {
     {
         return true
     }
+    
+    func updateScoreLabel() -> Void
+    {
+        ScoreLabel.text  = "Score: \(ScoreManager.Score)"
+    }
+        
+    func updateLivesLabel() -> Void
+    {
+        LivesLabel.text = "Lives: \(ScoreManager.Lives)"
+    }
+    
 }
