@@ -38,6 +38,7 @@ class GameObject: SKSpriteNode, GameProtocol
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     func CheckBounds()
     {
     }
@@ -46,7 +47,7 @@ class GameObject: SKSpriteNode, GameProtocol
     {
     }
     
-    func Start()
+    func Start(isPortrait: Bool)
     {
     }
     
@@ -54,5 +55,24 @@ class GameObject: SKSpriteNode, GameProtocol
     {
     }
     
+    func Rotate(isPortrait: Bool)
+    {
+    }
+    
+    func CheckBoundsLandscape()
+    {
+    }
+    
+    func ResetLandscape()
+    {
+    }
+    
+    func UpdateLandscape()
+    {
+    }
+    
+    func RotateLandscape()
+    {
+    }
     
 }

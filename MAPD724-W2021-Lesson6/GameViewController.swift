@@ -63,4 +63,16 @@ class GameViewController: UIViewController
         LivesLabel.text = "Lives: \(ScoreManager.Lives)"
     }
     
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil, completion: {_ in 
+            guard
+                let skView = self.view as? SKView,
+                let canReceiveRotationEvents = skView.scene as? CanReceiveTransitionEvents else { return }
+
+            canReceiveRotationEvents.viewDidTransition()
+        })
+    }
+    
 }

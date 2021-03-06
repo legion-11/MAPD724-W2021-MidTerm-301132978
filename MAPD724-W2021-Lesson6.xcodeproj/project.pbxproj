@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6944BAFE25F177C800F9912E /* CanReceiveTransitionEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944BAFD25F177C800F9912E /* CanReceiveTransitionEvents.swift */; };
+		6944BB0225F1841600F9912E /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6944BB0125F1841600F9912E /* MyScene.sks */; };
 		E9728E0F25F03E2D000FED64 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9728E0E25F03E2D000FED64 /* ScoreManager.swift */; };
 		E9728E1225F0408A000FED64 /* engine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9728E1125F04089000FED64 /* engine.mp3 */; };
 		E9728E1525F04096000FED64 /* thunder.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9728E1425F04096000FED64 /* thunder.mp3 */; };
@@ -83,6 +85,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6944BAFD25F177C800F9912E /* CanReceiveTransitionEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanReceiveTransitionEvents.swift; sourceTree = "<group>"; };
+		6944BB0125F1841600F9912E /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
 		E9728E0E25F03E2D000FED64 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		E9728E1125F04089000FED64 /* engine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = engine.mp3; sourceTree = "<group>"; };
 		E9728E1425F04096000FED64 /* thunder.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thunder.mp3; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				E9728E1425F04096000FED64 /* thunder.mp3 */,
 				E9728E1125F04089000FED64 /* engine.mp3 */,
 				E9DACE3025E71DDD00895099 /* Info.plist */,
+				6944BB0125F1841600F9912E /* MyScene.sks */,
 			);
 			path = "MAPD724-W2021-Lesson6";
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 			children = (
 				E9DACEAC25E7270B00895099 /* GameProtocol.swift */,
 				E9DACEB025E727B600895099 /* GameObject.swift */,
+				6944BAFD25F177C800F9912E /* CanReceiveTransitionEvents.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -450,6 +456,7 @@
 				E9DACE7D25E71F6300895099 /* coin08.png in Resources */,
 				E9DACE9C25E71F6300895099 /* explosion.mp3 in Resources */,
 				E9DACE9925E71F6300895099 /* explosion4.png in Resources */,
+				6944BB0225F1841600F9912E /* MyScene.sks in Resources */,
 				E9DACE7425E71F6300895099 /* plane2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,6 +472,7 @@
 				E9DACEBF25E7462100895099 /* Plane.swift in Sources */,
 				E9DACEC325E74B3A00895099 /* CollisionManager.swift in Sources */,
 				E9DACEAD25E7270B00895099 /* GameProtocol.swift in Sources */,
+				6944BAFE25F177C800F9912E /* CanReceiveTransitionEvents.swift in Sources */,
 				E9DACE2A25E71DDB00895099 /* GameViewController.swift in Sources */,
 				E9DACEB925E73C1A00895099 /* Island.swift in Sources */,
 				E9DACE2225E71DDB00895099 /* AppDelegate.swift in Sources */,

@@ -5,17 +5,47 @@ class Island: GameObject
 {
     
     // constructor
-    init()
+    init(_ isPortrait: Bool)
     {
         super.init(imageString: "island", initialScale: 2.0)
-        Start()
+        Start(isPortrait: isPortrait)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // initialization
+    override func Start(isPortrait: Bool)
+    {
+        zPosition = 1
+        if isPortrait {
+            Reset()
+        } else {
+            Rotate(isPortrait: isPortrait)
+            ResetLandscape()
+        }
+        dy = 5.0
+        dx = 5.0
+    }
+    
+    override func Rotate(isPortrait: Bool)
+    {
+        position = (isPortrait) ? CGPoint(x: 0 - position.y, y: position.x) : CGPoint(x: position.y, y: 0 - position.x)
+        zRotation = isPortrait ? 0 : 0 - (.pi / 2)
+    }
+    
     // LifeCycle Functions
+    override func Update()
+    {
+        Move()
+        CheckBounds()
+    }
+    
+    func Move()
+    {
+        position.y -= dy!
+    }
     
     override func CheckBounds()
     {
@@ -34,22 +64,32 @@ class Island: GameObject
         isColliding = false
     }
     
-    // initialization
-    override func Start()
+    override func UpdateLandscape()
     {
-        zPosition = 1
-        Reset()
-        dy = 5.0
+        MoveLandscape()
+        CheckBoundsLandscape()
     }
     
-    override func Update()
+    func MoveLandscape()
     {
-        Move()
-        CheckBounds()
+        position.x -= dx!
     }
     
-    func Move()
+    override func CheckBoundsLandscape()
     {
-        position.y -= dy!
+        if(position.x <= -730)
+        {
+            ResetLandscape()
+        }
     }
+    
+    override func ResetLandscape()
+    {
+        position.x = 730
+        // get a pseudo-random number from -313 to 313 =
+        let randomX:Int = (randomSource?.nextInt(upperBound: 626))! - 313
+        position.y = CGFloat(randomX)
+        isColliding = false
+    }
+    
 }

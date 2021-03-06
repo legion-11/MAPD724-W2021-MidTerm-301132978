@@ -5,17 +5,35 @@ class Plane: GameObject
 {
     
     // constructor
-    init()
+    init(_ isPortrait: Bool)
     {
         super.init(imageString: "plane", initialScale: 2.0)
-        Start()
+        Start(isPortrait: isPortrait)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // initialization
+    override func Start(isPortrait: Bool)
+    {
+        zPosition = 2
+        position = CGPoint(x: 0, y: -495)
+        if (!isPortrait) {Rotate(isPortrait: isPortrait)}
+    }
+    
+    override func Rotate(isPortrait: Bool)
+    {
+        position = (isPortrait) ? CGPoint(x: 0 - position.y, y: position.x) : CGPoint(x: position.y, y: 0 - position.x)
+        zRotation = isPortrait ? 0 : 0 - (.pi / 2)
+    }
+    
     // LifeCycle Functions
+    override func Update()
+    {
+        CheckBounds()
+    }
     
     override func CheckBounds()
     {
@@ -33,20 +51,25 @@ class Plane: GameObject
         
     }
     
-    override func Reset()
+    override func UpdateLandscape()
     {
-       
+        CheckBoundsLandscape()
     }
     
-    // initialization
-    override func Start()
+    override func CheckBoundsLandscape()
     {
-        zPosition = 2
-    }
-    
-    override func Update()
-    {
-        CheckBounds()
+        // constrain on the left - left boundary
+        if(position.y <= -310)
+        {
+            position.y = -310
+        }
+        
+        // constrain on the right - right boundary
+        if(position.y >= 310)
+        {
+            position.y = 310
+        }
+        
     }
     
     func TouchMove(newPos: CGPoint)

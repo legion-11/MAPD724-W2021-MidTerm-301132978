@@ -5,17 +5,46 @@ class Ocean: GameObject
 {
     
     // constructor
-    init()
+    init(_ isPortrait: Bool)
     {
         super.init(imageString: "ocean", initialScale: 2.0)
-        Start()
+        Start(isPortrait: isPortrait)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // initialization
+    override func Start(isPortrait: Bool)
+    {
+        zPosition = 0
+        position = CGPoint(x: 0, y: 773)
+        if (!isPortrait) {Rotate(isPortrait: isPortrait)
+}
+        dy = 5.0
+        dx = 5.0
+    }
+    
+    
+    override func Rotate(isPortrait: Bool)
+    {
+        position = (isPortrait) ? CGPoint(x: 0 - position.y, y: position.x) : CGPoint(x: position.y, y: 0 - position.x)
+        zRotation = isPortrait ? 0 : 0 - (.pi / 2)
+    }
+    
     // LifeCycle Functions
+    override func Update()
+    {
+        Move()
+        CheckBounds()
+    }
+    
+    func Move()
+    {
+        position.y -= dy!
+    }
     
     override func CheckBounds()
     {
@@ -30,21 +59,28 @@ class Ocean: GameObject
         position.y = 773
     }
     
-    // initialization
-    override func Start()
+    // LifeCycle Functions
+    override func UpdateLandscape()
     {
-        zPosition = 0
-        dy = 5.0
+        MoveLandscape()
+        CheckBoundsLandscape()
     }
     
-    override func Update()
+    func MoveLandscape()
     {
-        Move()
-        CheckBounds()
+        position.x -= dx!
     }
     
-    func Move()
+    override func CheckBoundsLandscape()
     {
-        position.y -= dy!
+        if(position.x <= -773)
+        {
+            ResetLandscape()
+        }
+    }
+    
+    override func ResetLandscape()
+    {
+        position.x = 773
     }
 }

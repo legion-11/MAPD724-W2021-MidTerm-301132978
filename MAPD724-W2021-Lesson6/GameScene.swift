@@ -7,7 +7,7 @@ let screenSize = UIScreen.main.bounds
 var screenWidth: CGFloat?
 var screenHeight: CGFloat?
 
-class GameScene: SKScene
+class GameScene: SKScene, CanReceiveTransitionEvents
 {
     
     // instance variables
@@ -15,34 +15,30 @@ class GameScene: SKScene
     var island: Island?
     var plane: Plane?
     var clouds: [Cloud] = []
-    
+    var isPortraitOrientation = true
     override func didMove(to view: SKView)
     {
         screenWidth = frame.width
         screenHeight = frame.height
-        
+        isPortraitOrientation = isPortrait()
         name = "GAME"
         
-        // add ocean to the scene
-        ocean = Ocean() // allocate memory
-        ocean?.position = CGPoint(x: 0, y: 773)
-        addChild(ocean!) // add object to the scene
-        
-        // add island to the scene
-        island = Island()
-        addChild(island!)
-        
-        // add plane to the scene
-        plane = Plane()
-        plane?.position = CGPoint(x: 0, y: -495)
-        addChild(plane!)
-        
-        // add 3 clouds to the scene
-        for index in 0...2
+        ocean = Ocean(isPortraitOrientation) // allocate memory
+        plane = Plane(isPortraitOrientation)
+        island = Island(isPortraitOrientation)
+        for _ in 0...1
         {
-            let cloud: Cloud = Cloud()
+            let cloud: Cloud = Cloud(isPortraitOrientation)
             clouds.append(cloud)
-            addChild(clouds[index])
+        }
+        
+        addChild(ocean!) // add object to the scene
+        addChild(plane!) // add plane to the scene
+        addChild(island!) // add island to the scene
+        // add 2 clouds to the scene
+        for cloud in clouds
+        {
+            addChild(cloud)
         }
         
         let engineSound = SKAudioNode(fileNamed: "engine.mp3")
@@ -64,21 +60,37 @@ class GameScene: SKScene
         
     }
     
+    // returns true if the device orientation is portrait
+    func isPortrait() -> Bool {
+        return (UIApplication.shared.windows
+                .first?
+                .windowScene?
+                .interfaceOrientation
+                .isPortrait) ?? true
+    }
+    
+    func movePlane(atPoint pos : CGPoint) {
+        if (isPortrait())
+        {
+            plane?.TouchMove(newPos: CGPoint(x: pos.x, y: -495))
+        } else {
+            plane?.TouchMove(newPos: CGPoint(x: -495, y: pos.y))
+        }
+    }
     
     func touchDown(atPoint pos : CGPoint)
     {
-        plane?.TouchMove(newPos: CGPoint(x: pos.x, y: -495))
+        movePlane(atPoint: pos)
     }
     
     func touchMoved(toPoint pos : CGPoint)
     {
-        plane?.TouchMove(newPos: CGPoint(x: pos.x, y: -495))
-
+        movePlane(atPoint: pos)
     }
     
     func touchUp(atPoint pos : CGPoint)
     {
-        plane?.TouchMove(newPos: CGPoint(x: pos.x, y: -495))
+        movePlane(atPoint: pos)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -104,18 +116,54 @@ class GameScene: SKScene
     // this is where all the fun happens - this function is called about 60fps - every 16.666ms
     override func update(_ currentTime: TimeInterval)
     {
-        ocean?.Update()
-        island?.Update()
-        plane?.Update()
-        
+        // depending on orientation objects updates with different functions,
+        // so we have only one global check of orientation 
+        if (isPortraitOrientation) {
+            ocean?.Update()
+            island?.Update()
+            plane?.Update()
+            
+            for cloud in clouds
+            {
+                cloud.Update()
+            }
+        } else {
+            ocean?.UpdateLandscape()
+            island?.UpdateLandscape()
+            plane?.UpdateLandscape()
+            
+            for cloud in clouds
+            {
+                cloud.UpdateLandscape()
+            }
+        }
+        // we do not need to change the colision to check with half width in landscape as a radius of object since we rotated objects
         CollisionManager.SquaredRadiusCheck(scene: self, object1: plane!, object2: island!)
-        
         for cloud in clouds
         {
-            cloud.Update()
             CollisionManager.SquaredRadiusCheck(scene: self, object1: plane!, object2: cloud)
         }
         
-        
+    }
+    
+    // this method will be called when a change in screen size occurs
+    func viewDidTransition()
+    {
+        let willBePortrait = isPortrait()
+        // if screen changed orientation from landscape to portrait or vice versa
+        if willBePortrait != isPortraitOrientation {
+            size = CGSize(width: size.height, height: size.width)
+            screenWidth = frame.width
+            screenHeight = frame.height
+            ocean?.Rotate(isPortrait: willBePortrait)
+            plane?.Rotate(isPortrait: willBePortrait)
+            island?.Rotate(isPortrait: willBePortrait)
+            for cloud in clouds
+            {
+                cloud.Rotate(isPortrait: willBePortrait)
+            }
+            
+        }
+        isPortraitOrientation = willBePortrait
     }
 }

@@ -1,10 +1,19 @@
 protocol GameProtocol
 {
+    func Start(isPortrait: Bool)
+    
     func CheckBounds()
+    
+    func CheckBoundsLandscape()
     
     func Reset()
     
-    func Start()
+    func ResetLandscape()
     
     func Update()
+    
+    func UpdateLandscape()
+    
+    func Rotate(isPortrait: Bool)
+    
 }
