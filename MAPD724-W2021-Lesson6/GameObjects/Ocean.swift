@@ -5,10 +5,10 @@ class Ocean: GameObject
 {
     
     // constructor
-    init(_ isPortrait: Bool)
+    init()
     {
         super.init(imageString: "ocean", initialScale: 2.0)
-        Start(isPortrait: isPortrait)
+        Start()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -17,12 +17,10 @@ class Ocean: GameObject
     
     
     // initialization
-    override func Start(isPortrait: Bool)
+    override func Start()
     {
         zPosition = 0
         position = CGPoint(x: 0, y: 773)
-        if (!isPortrait) {Rotate(isPortrait: isPortrait)
-}
         dy = 5.0
         dx = 5.0
     }

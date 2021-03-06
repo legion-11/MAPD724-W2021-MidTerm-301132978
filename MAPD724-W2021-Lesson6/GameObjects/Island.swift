@@ -5,10 +5,10 @@ class Island: GameObject
 {
     
     // constructor
-    init(_ isPortrait: Bool)
+    init()
     {
         super.init(imageString: "island", initialScale: 2.0)
-        Start(isPortrait: isPortrait)
+        Start()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -16,15 +16,10 @@ class Island: GameObject
     }
     
     // initialization
-    override func Start(isPortrait: Bool)
+    override func Start()
     {
         zPosition = 1
-        if isPortrait {
-            Reset()
-        } else {
-            Rotate(isPortrait: isPortrait)
-            ResetLandscape()
-        }
+        Reset()
         dy = 5.0
         dx = 5.0
     }

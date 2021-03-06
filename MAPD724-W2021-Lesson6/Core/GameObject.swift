@@ -47,7 +47,7 @@ class GameObject: SKSpriteNode, GameProtocol
     {
     }
     
-    func Start(isPortrait: Bool)
+    func Start()
     {
     }
     

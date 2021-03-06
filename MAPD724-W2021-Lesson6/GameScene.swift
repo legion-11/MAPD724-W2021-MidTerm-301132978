@@ -21,18 +21,17 @@ class GameScene: SKScene, CanReceiveTransitionEvents
     {
         screenWidth = frame.width
         screenHeight = frame.height
-        isPortraitOrientation = isPortrait()
         name = "GAME"
         
-        ocean = Ocean(isPortraitOrientation) // allocate memory
-        plane = Plane(isPortraitOrientation)
-        island = Island(isPortraitOrientation)
+        ocean = Ocean() // allocate memory
+        plane = Plane()
+        island = Island()
         for _ in 0...1
         {
-            let cloud: Cloud = Cloud(isPortraitOrientation)
+            let cloud: Cloud = Cloud()
             clouds.append(cloud)
         }
-        
+        viewDidTransition()
         addChild(ocean!) // add object to the scene
         addChild(plane!) // add plane to the scene
         addChild(island!) // add island to the scene

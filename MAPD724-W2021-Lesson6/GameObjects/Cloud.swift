@@ -5,10 +5,10 @@ class Cloud: GameObject
 {
     
     // constructor
-    init(_ isPortrait: Bool)
+    init()
     {
         super.init(imageString: "cloud", initialScale: 1.0)
-        Start(isPortrait: isPortrait)
+        Start()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -16,16 +16,11 @@ class Cloud: GameObject
     }
     
     // initialization
-    override func Start(isPortrait: Bool)
+    override func Start()
     {
         zPosition = 3
         alpha = 0.5
-        if isPortrait {
-            Reset()
-        } else {
-            ResetLandscape()
-            Rotate(isPortrait: isPortrait)
-        }
+        Reset()
     }
     
     override func Rotate(isPortrait: Bool)

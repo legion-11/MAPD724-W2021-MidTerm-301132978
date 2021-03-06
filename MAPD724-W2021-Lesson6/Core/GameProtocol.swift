@@ -1,7 +1,7 @@
 protocol GameProtocol
 {
     //initiate object
-    func Start(isPortrait: Bool)
+    func Start()
     
     // checks position of the object and resets it when object is outside the screen
     func CheckBounds()

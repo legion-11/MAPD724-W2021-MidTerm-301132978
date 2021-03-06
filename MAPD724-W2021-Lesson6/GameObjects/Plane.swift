@@ -5,10 +5,10 @@ class Plane: GameObject
 {
     
     // constructor
-    init(_ isPortrait: Bool)
+    init()
     {
         super.init(imageString: "plane", initialScale: 2.0)
-        Start(isPortrait: isPortrait)
+        Start()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -16,11 +16,10 @@ class Plane: GameObject
     }
     
     // initialization
-    override func Start(isPortrait: Bool)
+    override func Start()
     {
         zPosition = 2
         position = CGPoint(x: 0, y: -495)
-        if (!isPortrait) {Rotate(isPortrait: isPortrait)}
     }
     
     // LifeCycle Functions
