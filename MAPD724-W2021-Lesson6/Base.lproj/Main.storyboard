@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -18,17 +18,17 @@
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="MAPD724_W2021_Lesson6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 99999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxC-Wv-92p">
-                                <rect key="frame" x="270" y="63" width="123.5" height="21"/>
+                                <rect key="frame" x="708" y="19" width="123.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Dock51" family="Dock 51" pointSize="20"/>
                                 <color key="textColor" systemColor="systemYellowColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lives: 99" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iN-R4-EcP">
-                                <rect key="frame" x="20" y="63" width="79.5" height="21"/>
+                                <rect key="frame" x="600" y="19" width="79.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Dock51" family="Dock 51" pointSize="20"/>
                                 <color key="textColor" systemColor="systemYellowColor"/>
                                 <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="540"/>
                             </constraint>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="fxC-Wv-92p" secondAttribute="trailing" constant="20.5" id="K03-Ex-7gi">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-0.66666666666662877"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="20.5"/>
                             </constraint>
                             <constraint firstItem="4iN-R4-EcP" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="19" id="YBl-PF-Xh4">
                                 <variation key="heightClass=compact-widthClass=compact" constant="20"/>
