@@ -1,11 +1,13 @@
-import UIKit
-import SpriteKit
-import GameplayKit
-
+// GameViewController.swift
 // date 03.04
 // author - Dmytro Andriichuk
 // sudent number 301132978
 // scroller game for iphon 6s
+
+import UIKit
+import SpriteKit
+import GameplayKit
+
 class GameViewController: UIViewController
 {
 
