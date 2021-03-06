@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 
+// protocol for device rotation handling
 protocol CanReceiveTransitionEvents
 {
     func viewDidTransition()

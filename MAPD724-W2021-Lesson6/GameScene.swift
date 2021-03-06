@@ -7,6 +7,7 @@ let screenSize = UIScreen.main.bounds
 var screenWidth: CGFloat?
 var screenHeight: CGFloat?
 
+// implements CanReceiveTransitionEvents protocol to change object orientations and scene size
 class GameScene: SKScene, CanReceiveTransitionEvents
 {
     

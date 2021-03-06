@@ -2,6 +2,10 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+// date 03.04
+// author - Dmytro Andriichuk
+// sudent number 301132978
+// scroller game for iphon 6s
 class GameViewController: UIViewController
 {
 
@@ -63,7 +67,7 @@ class GameViewController: UIViewController
         LivesLabel.text = "Lives: \(ScoreManager.Lives)"
     }
     
-    
+    // activates vhen device change it's orientation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil, completion: {_ in 

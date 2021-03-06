@@ -57,6 +57,8 @@ class GameObject: SKSpriteNode, GameProtocol
     
     func Rotate(isPortrait: Bool)
     {
+        position = (isPortrait) ? CGPoint(x: 0 - position.y, y: position.x) : CGPoint(x: position.y, y: 0 - position.x)
+        zRotation = isPortrait ? 0 : 0 - (.pi / 2)
     }
     
     func CheckBoundsLandscape()
@@ -68,10 +70,6 @@ class GameObject: SKSpriteNode, GameProtocol
     }
     
     func UpdateLandscape()
-    {
-    }
-    
-    func RotateLandscape()
     {
     }
     

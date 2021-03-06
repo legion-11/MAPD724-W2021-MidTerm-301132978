@@ -38,12 +38,39 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4iN-R4-EcP" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="Dsk-dt-Qmo">
+                                <variation key="heightClass=compact-widthClass=compact" constant="239"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="540"/>
                             </constraint>
-                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="fxC-Wv-92p" secondAttribute="trailing" constant="20.5" id="K03-Ex-7gi"/>
-                            <constraint firstItem="4iN-R4-EcP" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="19" id="YBl-PF-Xh4"/>
-                            <constraint firstItem="4iN-R4-EcP" firstAttribute="baseline" secondItem="fxC-Wv-92p" secondAttribute="baseline" id="j61-kT-4e8"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="fxC-Wv-92p" secondAttribute="trailing" constant="20.5" id="K03-Ex-7gi">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-0.66666666666662877"/>
+                            </constraint>
+                            <constraint firstItem="4iN-R4-EcP" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="19" id="YBl-PF-Xh4">
+                                <variation key="heightClass=compact-widthClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="fxC-Wv-92p" firstAttribute="leading" secondItem="4iN-R4-EcP" secondAttribute="trailing" constant="28.5" id="cqy-Na-5rf"/>
+                            <constraint firstItem="fxC-Wv-92p" firstAttribute="leading" secondItem="4iN-R4-EcP" secondAttribute="trailing" constant="18.5" id="i3t-q9-7Ux"/>
+                            <constraint firstItem="4iN-R4-EcP" firstAttribute="baseline" secondItem="fxC-Wv-92p" secondAttribute="baseline" id="j61-kT-4e8">
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                            </constraint>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cqy-Na-5rf"/>
+                                <exclude reference="i3t-q9-7Ux"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="Dsk-dt-Qmo"/>
+                                <include reference="i3t-q9-7Ux"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="Dsk-dt-Qmo"/>
+                                <include reference="cqy-Na-5rf"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="LivesLabel" destination="4iN-R4-EcP" id="zPz-M5-jdk"/>

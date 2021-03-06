@@ -23,12 +23,6 @@ class Plane: GameObject
         if (!isPortrait) {Rotate(isPortrait: isPortrait)}
     }
     
-    override func Rotate(isPortrait: Bool)
-    {
-        position = (isPortrait) ? CGPoint(x: 0 - position.y, y: position.x) : CGPoint(x: position.y, y: 0 - position.x)
-        zRotation = isPortrait ? 0 : 0 - (.pi / 2)
-    }
-    
     // LifeCycle Functions
     override func Update()
     {
